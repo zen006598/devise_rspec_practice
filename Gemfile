@@ -19,6 +19,7 @@ gem 'devise'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem 'rspec-rails', '~> 6.0.0'
 end
 
 group :development do
@@ -31,4 +32,5 @@ group :test do
   gem "webdrivers"
   gem 'database_cleaner-active_record'
   gem "shoulda-matchers", "~> 5.3"
+  gem "factory_bot_rails", "~> 6.2"
 end
