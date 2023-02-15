@@ -6,9 +6,9 @@ RSpec.feature "create course"do
     click_on 'Create Course'
     expect(page.current_path).to eq new_course_path
     expect(page).to have_text 'Create Course'
-    
-    page.fill_in 'Title', with: 'Math'
-    page.fill_in 'Content', with: '123'
+
+    page.fill_in 'course_title', with: 'Math'
+    page.fill_in 'course_content', with: '123'
 
     click_on 'Create Course'
     expect(page).to have_text 'successfully created Math'
