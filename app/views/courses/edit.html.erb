@@ -3,6 +3,9 @@
   <%= form_with model: @course do |f| %>
     <%= f.label :title %>
     <%= f.text_field :title %>
+    <% @course.errors.full_messages_for(:title).each do |m| %>
+        <p><%= m %></p>
+      <% end %>
     <%= f.label :content %>
     <%= f.text_area :content %>
     <%= f.submit %>

@@ -14,7 +14,7 @@ class CoursesController < ApplicationController
     if @course.save
       redirect_to @course, notice: 'successfully created Math'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -25,7 +25,7 @@ class CoursesController < ApplicationController
     if @course.update(params_course)
       redirect_to @course, notice: 'successfully updated Math'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
