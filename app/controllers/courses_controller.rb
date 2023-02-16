@@ -7,11 +7,11 @@ class CoursesController < ApplicationController
   end
 
   def new
-    @course = Course.new
+    @course = current_user.courses.new
   end
 
   def create
-    @course = Course.new(params_course)
+    @course = current_user.courses.new(params_course)
     if @course.save
       redirect_to @course, notice: 'successfully created Math'
     else
@@ -45,6 +45,6 @@ class CoursesController < ApplicationController
   end
 
   def find_course
-    @course = Course.find(params[:id])
+    @course = current_user.courses.find(params[:id])
   end
 end

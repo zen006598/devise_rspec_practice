@@ -1,8 +1,8 @@
 require "rails_helper"
 
 RSpec.feature "edited course"do
-  let!(:course) { create(:course) }
   let(:user) { create(:user) }
+  let!(:course) { create(:course, user: user) }
 
   scenario "User made an valid edit to a course" do
     login_as(user)

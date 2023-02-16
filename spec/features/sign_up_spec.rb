@@ -27,7 +27,7 @@ let(:user) { create(:user) }
   scenario 'Email has already been taken' do
     user
     visit new_user_registration_path
-    page.fill_in 'user_email', with: 'user@example.com'
+    page.fill_in 'user_email', with: "#{user.email}"
     page.fill_in 'user_password', with: '111111'
     page.fill_in 'user_password_confirmation', with: '111111'
 

@@ -1,13 +1,12 @@
 require "rails_helper"
 
 RSpec.feature "destory course" do
-  let!(:course) { create(:course) }
   let(:user) { create(:user) }
+  let!(:course) { create(:course, user: user) }
 
   scenario "User destory course" do
     login_as(user)
-    visit root_path
-    click_on 'Remove'
+    page.driver.submit :delete, "/courses/#{course.id}", {}
 
     expect(page).to have_text 'Math is successfully remove.'
   end

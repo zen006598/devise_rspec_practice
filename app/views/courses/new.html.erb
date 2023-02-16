@@ -1,7 +1,7 @@
 <div>
   <h1 class="text-4xl font-bold">Create Course</h1>
 
-  <%= form_with model: @course do |f| %>
+  <%= form_with model: @course, data: {turbo: false} do |f| %>
     <div>
       <%= f.label 'title' %>
       <%= f.text_field :title %>
