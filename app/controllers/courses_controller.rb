@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :find_course, only: %i[edit show update destory]
+  before_action :find_course, only: %i[edit show update destroy]
 
   def index
     @courses = Course.all
@@ -32,7 +32,9 @@ class CoursesController < ApplicationController
   def show
   end
 
-  def destory
+  def destroy
+    @course.destroy
+    redirect_to root_path, status: :see_other, notice: 'Math is successfully remove.'
   end
 
   private
