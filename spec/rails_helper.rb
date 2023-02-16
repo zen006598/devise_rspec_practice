@@ -21,6 +21,8 @@ require 'rspec/rails'
 # require only the support files necessary.
 #
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
+require 'capybara/rspec'
+require 'capybara/rails'
 
 Capybara.server_port = 3001
 

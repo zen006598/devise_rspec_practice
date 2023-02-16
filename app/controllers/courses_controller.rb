@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+  before_action :authenticate_user!, only: %i[edit show update destroy show new]
   before_action :find_course, only: %i[edit show update destroy]
 
   def index
