@@ -1,11 +1,11 @@
 require "rails_helper"
 
 RSpec.feature "edited course"do
-
-  let(:course) { Course.create(title: 'Math', content: '123') }
+  let!(:course) { create(:course) }
+  let(:user) { create(:user) }
 
   scenario "User made an valid edit to a course" do
-    course
+    login_as(user)
     visit edit_course_path(course.id)
 
     expect(page.current_path).to eq edit_course_path(course.id)
@@ -18,7 +18,7 @@ RSpec.feature "edited course"do
   end
 
   scenario "User made an invalid edit to a course" do
-    course
+    login_as(user)
     visit edit_course_path(course.id)
 
     expect(page.current_path).to eq edit_course_path(course.id)
@@ -28,5 +28,10 @@ RSpec.feature "edited course"do
 
     click_on 'Update Course'
     expect(page).to have_text 'Title can\'t be blank'
+  end
+
+  scenario "Unlogin edit course" do
+    visit edit_course_path(course.id)
+    expect(page).to have_text 'You need to sign in or sign up before continuing.'
   end
 end
