@@ -1,17 +1,13 @@
 require "rails_helper"
 
-RSpec.feature "Sign up"do
-  let(:user) { create(:user) }
-  
-  before do
-    user
-    login_as(user)
-    visit root_path
+RSpec.feature "User sign out"do
+  describe "when sign out" do
+    let!(:user) { create(:user) }
+    scenario 'Successed' do
+      login_as(user)
+      visit root_path
+      click_on '登出'
+      expect(page).to have_text 'Signed out successfully.'
+    end
   end
-
-  scenario 'Sign out' do
-    click_on '登出'
-    expect(page).to have_text 'Signed out successfully.'
-  end
-
 end
